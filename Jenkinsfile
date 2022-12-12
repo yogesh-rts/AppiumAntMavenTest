@@ -6,7 +6,7 @@ pipeline {
         ANDROID_SDK_ROOT="/Users/yogeshkumar/Library/Android/sdk"
         ANDROID_AVD_HOME="/Users/yogeshkumar/.android/avd"
         JAVA_HOME="/opt/homebrew/opt/openjdk@17"
-        ANT_HOME="/opt/homebrew/Cellar/ant/1.10.12/libexec/bin/lib"
+ //       ANT_HOME="/opt/homebrew/Cellar/ant/1.10.12/libexec/bin/lib"
     }
     options {
         timeout(time:2, unit:'HOURS')
