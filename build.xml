@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Google Chrome">
+    <target name="chromeTest">
+        <parallel>
+            <sleep seconds="2"/>
+            <exec executable="/bin/bash">
+                <arg value="appiumshell.sh"/>
+            </exec>
+        </parallel>
+    </target>
+</project>
