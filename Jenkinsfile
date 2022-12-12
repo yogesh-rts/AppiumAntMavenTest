@@ -12,6 +12,15 @@ pipeline {
         timeout(time:2, unit:'HOURS')
     }
     stages {
+        stage('Check tool versions'){
+            steps {
+                script {
+                sh 'ant -version'
+                sh 'java -version'
+                sh 'mvn -version'
+                }
+            }
+        }
         stage('Run UI test') {
             steps {
                 script {
