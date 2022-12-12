@@ -18,4 +18,4 @@ case "$os" in
 
  esac
 
- wait  
+ wait
