@@ -26,7 +26,7 @@ pipeline {
               //  script {
                   dir('/src/test/resources/setup') {
                     sh 'pwd'
-                    echo ${pwd}
+                   // echo ${pwd}
                     sh 'chmod 755 emulator27_arm64.sh'
                     sh 'emulator27_arm64.sh'
                     sh 'emulator @emulator27_arm64'
