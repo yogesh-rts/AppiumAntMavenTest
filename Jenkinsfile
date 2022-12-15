@@ -21,6 +21,14 @@ pipeline {
                 }
             }
         }
+        stage('Launch Android emulator') {
+            steps {
+                script {
+                sh 'chmod 755 ./src/test/resources/setup/emulator27_arm64.sh'
+                sh "./src/test/resources/setup/emulator27_arm64"
+                }
+            }
+        }
         stage('Run UI test') {
             steps {
                 script {
