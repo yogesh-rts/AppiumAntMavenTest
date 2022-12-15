@@ -6,6 +6,8 @@ pipeline {
         ANDROID_SDK_ROOT="/Users/yogeshkumar/Library/Android/sdk"
         ANDROID_AVD_HOME="/Users/yogeshkumar/.android/avd"
         JAVA_HOME="/opt/homebrew/opt/openjdk@17"
+        EMULATOR_HOME = export PATH="$ANDROID_HOME/tools/lib/x86_64:$PATH"
+
  //       ANT_HOME="/opt/homebrew/Cellar/ant/1.10.12/libexec/bin/lib"
     }
     options {
