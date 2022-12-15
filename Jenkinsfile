@@ -24,13 +24,9 @@ pipeline {
         stage('Launch Android emulator') {
             steps {
                 script {
-                  dir('/src/test/resources/setup') {
-                    sh 'chmod 755 emulator27_arm64.sh'
-                    sh 'emulator27_arm64.sh'
-                    sh 'emulator @emulator27_arm64'
-                }
-                //sh "cd ./src/test/resources/setup/ && chmod 755 emulator27_arm64.sh"
-                //sh './src/test/resources/setup/emulator27_arm64.sh'
+                sh 'chmod 755 ./src/test/resources/setup/emulator27_arm64.sh'
+                sh './src/test/resources/setup/emulator27_arm64.sh'
+                sh 'emulator @emulator27_arm64'
                }
             }
         }
