@@ -1,4 +1,4 @@
-#!bin/zsh
+#!/bin/zsh
 
 DEVICE_NAME="EMULATOR27"
 SYSTEM_IMAGE_PATH="system-images;android-27;google_apis;arm64-v8a"
