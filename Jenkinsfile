@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                 sh 'chmod 755 ./src/test/resources/setup/emulator27_arm64.sh'
-                sh "./src/test/resources/setup/emulator27_arm64"
+                sh './src/test/resources/setup/emulator27_arm64.sh'
                 }
             }
         }
