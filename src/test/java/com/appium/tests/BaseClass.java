@@ -25,7 +25,7 @@ public class BaseClass {
             DesiredCapabilities caps = new DesiredCapabilities();
             caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "ANDROID");
             caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "8.1.0");
-            caps.setCapability(MobileCapabilityType.DEVICE_NAME, "EMULATOR27");
+            caps.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
             caps.setCapability(MobileCapabilityType.UDID, "Android SDK built for x86");
             caps.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "60");
             //  caps.setCapability(MobileCapabilityType.APP, "");
