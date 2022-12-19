@@ -29,6 +29,8 @@ public class BaseClass {
             caps.setCapability(MobileCapabilityType.UDID, "Android SDK built for arm64");
             caps.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "60");
             //  caps.setCapability(MobileCapabilityType.APP, "");
+            caps.setCapability("noReset", "true");
+            caps.setCapability("fullReset", "false");
             caps.setCapability(MobileCapabilityType.BROWSER_NAME, "chrome");
 
 
