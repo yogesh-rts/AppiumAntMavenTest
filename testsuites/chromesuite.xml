@@ -5,10 +5,11 @@
         <classes>
             <class name="com.appium.tests.ChromeBrowserTest">
                 <methods>
-                    <include name="testInputNameAsFifa" />
+                    <include name="testGreetingText" />
+                    <!--<include name="testInputNameAsFifa" />
                     <include name="testInputNameAsMessi" />
                     <include name="testInputNameAsCR7" />
-                    <include name="testInputNameAsQatarFifa" />
+                    <include name="testInputNameAsQatarFifa" />-->
                 </methods>
             </class>
         </classes>
