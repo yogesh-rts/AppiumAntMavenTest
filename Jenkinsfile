@@ -7,9 +7,9 @@ pipeline {
         ANDROID_AVD_HOME="/Users/yogeshkumar/.android/avd"
         ANDROID_PLATFORM_TOOLS="${ANDROID_HOME}/platform-tools"
         ANDROID_TOOLS="${ANDROID_HOME}/tools"
-        JAVA_HOME="/opt/homebrew/opt/openjdk@17"
+        JAVA_HOME="/opt/homebrew/Cellar/openjdk@17/17.0.5/libexec/openjdk.jdk/Contents/Home/bin"
         EMULATOR_HOME="${ANDROID_HOME}/emulator"
-     //   MAVEN_HOME="/opt/homebrew/Cellar/maven/3.8.6"
+        MAVEN_HOME="/opt/homebrew/Cellar/maven/3.8.7/libexec/bin"
      //   MAVEN_PATH="${MAVEN_HOME}/bin:${MAVEN_PATH}"
 
         APPIUM_PORT=4723
@@ -110,7 +110,7 @@ pipeline {
             echo "Stop running appium server"
             sh "kill \$(lsof -t -i :${APPIUM_PORT})"
 
-            cleanWs()
+         //   cleanWs()
         }
     }
 }
