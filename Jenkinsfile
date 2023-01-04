@@ -30,11 +30,11 @@ pipeline {
                 }
             }
         }
-        stage('Clean Workspace') {
+        /* stage('Clean Workspace') {
             steps {
                 clean()
             }
-        }
+        } */
         /* stage('Clone project') {
             steps {
                 git branch: 'main', credentialsId: 'MyGitHub', url: 'https://github.com/yogesh-rts/AppiumAntMavenTest'
@@ -109,6 +109,8 @@ pipeline {
         always {
             echo "Stop running appium server"
             sh "kill \$(lsof -t -i :${APPIUM_PORT})"
+
+            cleanWs()
         }
     }
 }
