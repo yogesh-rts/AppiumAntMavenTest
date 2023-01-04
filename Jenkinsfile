@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Clean Workspace') {
             steps {
-                cleanWs()
+                clean()
             }
         }
         /* stage('Clone project') {
