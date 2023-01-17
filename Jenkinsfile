@@ -16,6 +16,9 @@ pipeline {
 
  //       ANT_HOME="/opt/homebrew/Cellar/ant/1.10.12/libexec/bin/lib"
     }
+    /* tools {
+        maven 'Maven'
+    } */
     options {
         timeout(time:2, unit:'HOURS')
     }
