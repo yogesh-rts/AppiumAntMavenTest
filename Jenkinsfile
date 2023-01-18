@@ -7,7 +7,7 @@ pipeline {
         ANDROID_AVD_HOME="/Users/yogeshkumar/.android/avd"
         ANDROID_PLATFORM_TOOLS="${ANDROID_HOME}/platform-tools"
         ANDROID_TOOLS="${ANDROID_HOME}/tools"
-        JAVA_HOME="/opt/homebrew/Cellar/openjdk@17/17.0.5/libexec/openjdk.jdk/Contents/Home/bin"
+        JAVA_HOME="/Users/yogeshkumar/Library/Java/JavaVirtualMachines/temurin-17.0.5/Contents/Home"
         EMULATOR_HOME="${ANDROID_HOME}/emulator"
         MAVEN_HOME="/opt/homebrew/Cellar/maven/3.8.7/libexec/bin"
      //   MAVEN_PATH="${MAVEN_HOME}/bin:${MAVEN_PATH}"
