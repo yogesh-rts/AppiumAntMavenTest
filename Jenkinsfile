@@ -28,8 +28,9 @@ pipeline {
                 script {
               //  sh 'ant -version'
                 sh 'java -version'
-                sh 'mvn -version'
+                sh 'source ~/.profile'
                 sh 'appium &'
+                sh 'mvn -version'
                 }
             }
         }
