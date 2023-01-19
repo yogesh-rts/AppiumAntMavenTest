@@ -55,11 +55,7 @@ pipeline {
                     sh 'if [[ ! -d ~/.android/avd/EMULATOR27.avd ]]; then echo "EMULATOR27 image does not exists"; fi'
 
                     // If emulator image doesn't exists override permission and create it
-                    sh 'if [[ ! -d ~/.android/avd/EMULATOR27.avd ]]; then
-                            chmod +x "${WORKSPACE}/src/test/resources/setup/emulator27_arm64.sh"
-                            sh "${WORKSPACE}/src/test/resources/setup/emulator27_arm64.sh"
-                        else
-                            echo "EMULATOR27.avd already exists"; fi'
+                    sh 'if [[ ! -d ~/.android/avd/EMULATOR27.avd ]]; then chmod +x "${WORKSPACE}/src/test/resources/setup/emulator27_arm64.sh" sh "${WORKSPACE}/src/test/resources/setup/emulator27_arm64.sh" else echo "EMULATOR27.avd already exists"; fi'
                     // sh 'chmod +x ${WORKSPACE}/src/test/resources/setup/emulator27_arm64.sh'
 
 
