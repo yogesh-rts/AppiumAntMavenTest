@@ -69,8 +69,9 @@ pipeline {
                             if [[ -d ~/.android/avd/EMULATOR27.avd ]]; then
                                 echo "AVD created successfully"
                                 # Start the emulator
-                                emulator -avd EMULATOR27 &
+                                sh "${EMULATOR_HOME}/emulator @EMULATOR27 &"
                                 echo "Emulator started"
+                                sh "${ANDROID_PLATFORM_TOOLS}/adb wait-for-device"
                             else
                                 echo "Failed to create AVD"
                             fi
@@ -80,9 +81,9 @@ pipeline {
                     '
 
                     // Launch EMULATOR27 in background and wait for it to be ready
-                    sh "${EMULATOR_HOME}/emulator @EMULATOR27 &"
+                    /* sh "${EMULATOR_HOME}/emulator @EMULATOR27 &"
                     sh "${ANDROID_PLATFORM_TOOLS}/adb wait-for-device"
-                    sh 'sleep 60'
+                    sh 'sleep 60' */
                     }
 
                     def adbOutput = sh(script: "${ANDROID_PLATFORM_TOOLS}/adb devices", returnStdout: true)
