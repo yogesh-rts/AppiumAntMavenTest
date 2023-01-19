@@ -55,12 +55,29 @@ pipeline {
                     sh 'if [[ ! -d ~/.android/avd/EMULATOR27.avd ]]; then echo "EMULATOR27 image does not exists"; fi'
 
                     // If emulator image doesn't exists override permission and create it
-                    sh 'if [[ ! -d ~/.android/avd/EMULATOR27.avd ]]; then chmod +x "${WORKSPACE}/src/test/resources/setup/emulator27_arm64.sh" sh "${WORKSPACE}/src/test/resources/setup/emulator27_arm64.sh" else echo "EMULATOR27.avd already exists"; fi'
+                   // sh 'if [[ ! -d ~/.android/avd/EMULATOR27.avd ]]; then chmod +x "${WORKSPACE}/src/test/resources/setup/emulator27_arm64.sh" sh "${WORKSPACE}/src/test/resources/setup/emulator27_arm64.sh" else echo "EMULATOR27.avd already exists"; fi'
                     // sh 'chmod +x ${WORKSPACE}/src/test/resources/setup/emulator27_arm64.sh'
 
+                    sh '
+                        # Check if the AVD directory exists
+                        if [[ ! -d ~/.android/avd/EMULATOR27.avd ]]; then
+                            # Change permissions and run the setup script
+                            chmod +x "${WORKSPACE}/src/test/resources/setup/emulator27_arm64.sh"
+                            sh "${WORKSPACE}/src/test/resources/setup/emulator27_arm64.sh"
 
-                    /*sh 'chmod 755 /Users/yogeshkumar/MyGit - Repo/AppiumAntMavenTest/src/test/resources/setupsrc/test/resources/setup/emulator27_arm64.sh'
-                    sh '/Users/yogeshkumar/MyGit - Repo/AppiumAntMavenTest/src/test/resources/setup/emulator27_arm64.sh'*/
+                            # Check if the AVD was created successfully
+                            if [[ -d ~/.android/avd/EMULATOR27.avd ]]; then
+                                echo "AVD created successfully"
+                                # Start the emulator
+                                emulator -avd EMULATOR27 &
+                                echo "Emulator started"
+                            else
+                                echo "Failed to create AVD"
+                            fi
+                        else
+                            echo "AVD already exists"
+                        fi
+                    '
 
                     // Launch EMULATOR27 in background and wait for it to be ready
                     sh "${EMULATOR_HOME}/emulator @EMULATOR27 &"
