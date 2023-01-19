@@ -58,7 +58,7 @@ pipeline {
                    // sh 'if [[ ! -d ~/.android/avd/EMULATOR27.avd ]]; then chmod +x "${WORKSPACE}/src/test/resources/setup/emulator27_arm64.sh" sh "${WORKSPACE}/src/test/resources/setup/emulator27_arm64.sh" else echo "EMULATOR27.avd already exists"; fi'
                     // sh 'chmod +x ${WORKSPACE}/src/test/resources/setup/emulator27_arm64.sh'
 
-                    sh '
+                    sh "
                         # Check if the AVD directory exists
                         if [[ ! -d ~/.android/avd/EMULATOR27.avd ]]; then
                             # Change permissions and run the setup script
@@ -78,7 +78,7 @@ pipeline {
                         else
                             echo "AVD already exists"
                         fi
-                    '
+                    "
 
                     // Launch EMULATOR27 in background and wait for it to be ready
                     /* sh "${EMULATOR_HOME}/emulator @EMULATOR27 &"
