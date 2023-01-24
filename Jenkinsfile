@@ -93,7 +93,8 @@ pipeline {
                     copyArtifacts(
                     projectName: 'App-QA/AndroidXMLProject',
                     flatten: true,
-                    fingerprintArtifacts: true
+                    fingerprintArtifacts: true,
+                    selector: lastWithArtifacts()
                     );
 
                     def isInstalled = sh(script: "${ANDROID_PLATFORM_TOOLS}/adb shell pm list packages | grep com.example.demoandroidapp", returnStdout: true).trim()
