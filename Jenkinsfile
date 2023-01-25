@@ -100,7 +100,7 @@ pipeline {
                     def isInstalled = sh(script: "${ANDROID_PLATFORM_TOOLS}/adb shell pm list packages", returnStdout: true).trim()
                     echo "${isInstalled}"
                     // If the APK is installed, uninstall it
-                    if (isInstalled.contains("grep com.example.demoandroidapp")) {
+                    if (isInstalled.contains("com.example.demoandroidapp")) {
                         sh "${ANDROID_PLATFORM_TOOLS}/adb uninstall com.example.demoandroidapp"
                     } else {
                         echo "the package is not installed"
