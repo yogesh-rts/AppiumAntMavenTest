@@ -97,10 +97,10 @@ pipeline {
                     selector: lastWithArtifacts()
                     );
 
-                    def isInstalled = sh(script: "${ANDROID_PLATFORM_TOOLS}/adb shell pm list packages | grep com.example.demoandroidapp", returnStdout: true)
+                    def isInstalled = sh(script: "${ANDROID_PLATFORM_TOOLS}/adb shell pm list packages | grep com.example.demoandroidapp", returnStdout: true).trim()
                     echo "${isInstalled}"
                     // If the APK is installed, uninstall it
-                    if (isInstalled.length > 0) {
+                    if (isInstalled) {
                         sh "${ANDROID_PLATFORM_TOOLS}/adb uninstall com.example.demoandroidapp"
                     }
 
