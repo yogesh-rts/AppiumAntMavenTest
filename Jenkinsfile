@@ -91,7 +91,7 @@ pipeline {
 
                     // Copy APK artifact from another job 'HALO-ANDROID'
                     copyArtifacts(
-                    projectName: 'App-QA/AndroidUIProject',
+                    projectName: 'Android-QA/Android-UI-Project',
                     flatten: true,
                     fingerprintArtifacts: true,
                     selector: lastWithArtifacts()
