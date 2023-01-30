@@ -92,7 +92,7 @@ pipeline {
                     // Copy APK artifact from another job 'HALO-ANDROID'
                     apkPath= "/Users/yogeshkumar/.jenkins/workspace/Android-QA/Android-UI-Project/Android-UI-2-debug.apk"
                     targetDir = "${WORKSPACE}/Android-UI-2-debug.apk"
-                    sh 'cp $apkPath $targetDir'
+                    sh "cp ${apkPath} ${targetDir}"
 
 
                    //Check if the file was copied successfully
