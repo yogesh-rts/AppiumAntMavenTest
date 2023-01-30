@@ -95,12 +95,12 @@ pipeline {
 
 
                    //Check if the file was copied successfully
-                    sh """if [ $? -eq 0 ]; then
+                    /* sh """if [ $? -eq 0 ]; then
                         echo "Successfully copied .apk file from shared file server to workspace"
                     else
                         echo "Failed to copy .apk file from shared file server to workspace"
                         exit 1
-                    fi"""
+                    fi""" */
 
                     /* copyArtifacts(
                     projectName: 'Android-QA/Android-UI-Project',
