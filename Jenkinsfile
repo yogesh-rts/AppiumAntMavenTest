@@ -90,8 +90,8 @@ pipeline {
                     def deviceId = adbOutput.split('\n')[1].split('\t')[0]
 
                     // Copy APK artifact from another job 'HALO-ANDROID'
-                    apkPath= "/Users/yogeshkumar/.jenkins/workspace/Android-QA/Android-UI-Project/Android-UI-*-debug.apk"
-                    sh 'cp "${apkPath} ${WORKSPACE}/Android-UI-*-debug.apk"'
+                    apkPath= "/Users/yogeshkumar/.jenkins/workspace/Android-QA/Android-UI-Project/Android-UI-2-debug.apk"
+                    sh 'cp "${apkPath} ${WORKSPACE}/Android-UI-2-debug.apk"'
 
 
                    //Check if the file was copied successfully
