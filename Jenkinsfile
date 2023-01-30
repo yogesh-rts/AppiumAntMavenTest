@@ -91,7 +91,7 @@ pipeline {
 
                     // Find the file that matches the wildcard
                     def filePathName= sh(returnStdout: true, script:'ls /Users/yogeshkumar/.jenkins/workspace/Android-QA/Android-UI-Project/Android-UI-*-debug.apk').trim()
-                    def fileName = "$(basename, ${fileName})"
+                    def fileName = "$(basename, "${filePathName}")"
                     echo "${fileName}"
                     // Copy APK artifact from another job 'HALO-ANDROID'
                     apkPath= "/Users/yogeshkumar/.jenkins/workspace/Android-QA/Android-UI-Project/${fileName}"
