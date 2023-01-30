@@ -90,12 +90,24 @@ pipeline {
                     def deviceId = adbOutput.split('\n')[1].split('\t')[0]
 
                     // Copy APK artifact from another job 'HALO-ANDROID'
-                    copyArtifacts(
+                    apkPath= "/Users/yogeshkumar/.jenkins/workspace/Android-QA/Android-UI-Project/Android-UI-*-debug.apk"
+                    cp "${apkPath} ${WORKSPACE}/Android-UI-*-debug.apk"
+
+
+                   //Check if the file was copied successfully
+                    if [ $? -eq 0 ]; then
+                        echo "Successfully copied .apk file from shared file server to workspace"
+                    else
+                        echo "Failed to copy .apk file from shared file server to workspace"
+                        exit 1
+                    fi
+
+                    /* copyArtifacts(
                     projectName: 'Android-QA/Android-UI-Project',
                     flatten: true,
                     fingerprintArtifacts: true,
                     selector: lastWithArtifacts()
-                    );
+                    ); */
 
                     def isInstalled = sh(script: "${ANDROID_PLATFORM_TOOLS}/adb shell pm list packages", returnStdout: true).trim()
                     echo "${isInstalled}"
