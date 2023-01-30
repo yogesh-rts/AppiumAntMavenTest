@@ -89,8 +89,11 @@ pipeline {
                     def adbOutput = sh(script: "${ANDROID_PLATFORM_TOOLS}/adb devices", returnStdout: true)
                     def deviceId = adbOutput.split('\n')[1].split('\t')[0]
 
+                    // Find the file that matches the wildcard
+                    def fileName= sh(returnStdout: true, script:'ls /Users/yogeshkumar/.jenkins/workspace/Android-QA/Android-Automation/Android-UI-*-debug.apk').trim()
+
                     // Copy APK artifact from another job 'HALO-ANDROID'
-                    apkPath= "/Users/yogeshkumar/.jenkins/workspace/Android-QA/Android-UI-Project/Android-UI-2-debug.apk"
+                    apkPath= "/Users/yogeshkumar/.jenkins/workspace/Android-QA/Android-UI-Project/${fileName}"
                     targetDir = "${WORKSPACE}/Android-UI-2-debug.apk"
                     sh "cp ${apkPath} ${targetDir}"
 
