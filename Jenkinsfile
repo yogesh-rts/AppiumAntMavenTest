@@ -70,7 +70,7 @@ pipeline {
                         fi
                     """
 
-                    sh 'if [[ -d ~/.android/avd/EMULATOR27.avd ]]; then "${EMULATOR_HOME}/emulator @EMULATOR27 &" else echo "Failed to launch AVD" fi'
+                    sh 'if [[ -d ~/.android/avd/EMULATOR27.avd ]]; then "${EMULATOR_HOME}/emulator @EMULATOR27 &"; fi'
                         /* # Check if the AVD was created successfully
                         if [[ -d ~/.android/avd/EMULATOR27.avd ]]; then
                             echo "AVD created successfully"
