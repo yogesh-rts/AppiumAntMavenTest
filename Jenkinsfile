@@ -77,6 +77,9 @@ pipeline {
                             fi
                         else
                             echo "AVD already exists"
+                            sh "${EMULATOR_HOME}/emulator @EMULATOR27 &"
+                            echo "Emulator started"
+                            sh "${ANDROID_PLATFORM_TOOLS}/adb wait-for-device"
                         fi
                     """
 
