@@ -70,8 +70,8 @@ pipeline {
                         fi
                     """
 
-                    sh """
-                        # Check if the AVD was created successfully
+                    sh 'if [[ -d ~/.android/avd/EMULATOR27.avd ]]; then "${EMULATOR_HOME}/emulator @EMULATOR27 &" else echo "Failed to launch AVD" fi'
+                        /* # Check if the AVD was created successfully
                         if [[ -d ~/.android/avd/EMULATOR27.avd ]]; then
                             echo "AVD created successfully"
                             # Start the emulator
@@ -80,8 +80,8 @@ pipeline {
                             sh "${ANDROID_PLATFORM_TOOLS}/adb wait-for-device"
                         else
                             echo "Failed to launch AVD"
-                        fi
-                    """
+                        fi */
+
 
                     // Launch EMULATOR27 in background and wait for it to be ready
                     /* sh "${EMULATOR_HOME}/emulator @EMULATOR27 &"
