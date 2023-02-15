@@ -148,12 +148,6 @@ pipeline {
         }
     }
 
-    def launchEmulator() {
-        sh "${EMULATOR_HOME}/emulator @EMULATOR27 &"
-        echo "Emulator started"
-        sh "${ANDROID_PLATFORM_TOOLS}/adb wait-for-device"
-    }
-
     post {
         always {
             testNG reportFilenamePattern: '**/target/surefire-reports/testng-results.xml'
@@ -164,4 +158,10 @@ pipeline {
          //   cleanWs()
         }
     }
+}
+
+def launchEmulator() {
+    sh "${EMULATOR_HOME}/emulator @EMULATOR27 &"
+    echo "Emulator started"
+    sh "${ANDROID_PLATFORM_TOOLS}/adb wait-for-device"
 }
