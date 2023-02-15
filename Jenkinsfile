@@ -72,6 +72,7 @@ pipeline {
 
                     sh "${EMULATOR_HOME}/emulator @EMULATOR27 &"
                     sh "${ANDROID_PLATFORM_TOOLS}/adb wait-for-device"
+                    sh 'sleep 60'
                         /* # Check if the AVD was created successfully
                         if [[ -d ~/.android/avd/EMULATOR27.avd ]]; then
                             echo "AVD created successfully"
