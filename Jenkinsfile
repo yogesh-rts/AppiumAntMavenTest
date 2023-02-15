@@ -77,9 +77,7 @@ pipeline {
                             fi
                         else
                             echo "AVD already exists"
-                            "${EMULATOR_HOME}/emulator @EMULATOR27 &"
-                            echo "Emulator started"
-                            "${ANDROID_PLATFORM_TOOLS}/adb wait-for-device"
+                            launchEmulator()
                         fi
                     """
 
@@ -148,6 +146,12 @@ pipeline {
                 ])
             }
         }
+    }
+
+    def launchEmulator() {
+        sh "${EMULATOR_HOME}/emulator @EMULATOR27 &"
+        echo "Emulator started"
+        sh "${ANDROID_PLATFORM_TOOLS}/adb wait-for-device"
     }
 
     post {
