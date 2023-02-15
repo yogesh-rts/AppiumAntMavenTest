@@ -65,21 +65,21 @@ pipeline {
                             chmod +x "${WORKSPACE}/src/test/resources/setup/emulator27_arm64.sh"
                             sh "${WORKSPACE}/src/test/resources/setup/emulator27_arm64.sh"
 
-                            # Check if the AVD was created successfully
-                            if [[ -d ~/.android/avd/EMULATOR27.avd ]]; then
-                                echo "AVD created successfully"
-                                # Start the emulator
-                                sh "${EMULATOR_HOME}/emulator @EMULATOR27 &"
-                                echo "Emulator started"
-                                sh "${ANDROID_PLATFORM_TOOLS}/adb wait-for-device"
-                            else
-                                echo "Failed to create AVD"
-                            fi
                         else
-                            echo "AVD already exists"
+                            echo "Failed to create AVD"
+                        fi
+                    """
+
+                    sh """
+                        # Check if the AVD was created successfully
+                        if [[ -d ~/.android/avd/EMULATOR27.avd ]]; then
+                            echo "AVD created successfully"
+                            # Start the emulator
                             sh "${EMULATOR_HOME}/emulator @EMULATOR27 &"
                             echo "Emulator started"
                             sh "${ANDROID_PLATFORM_TOOLS}/adb wait-for-device"
+                        else
+                            echo "Failed to launch AVD"
                         fi
                     """
 
