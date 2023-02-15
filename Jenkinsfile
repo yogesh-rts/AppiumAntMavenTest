@@ -66,11 +66,12 @@ pipeline {
                             sh "${WORKSPACE}/src/test/resources/setup/emulator27_arm64.sh"
 
                         else
-                            echo "Failed to create AVD"
+                            echo "Already AVD is created and exists"
                         fi
                     """
 
-                    sh 'if [[ -d ~/.android/avd/EMULATOR27.avd ]]; then "${EMULATOR_HOME}/emulator @EMULATOR27 &"; fi'
+                    sh "${EMULATOR_HOME}/emulator @EMULATOR27 &"
+                    sh "${ANDROID_PLATFORM_TOOLS}/adb wait-for-device"
                         /* # Check if the AVD was created successfully
                         if [[ -d ~/.android/avd/EMULATOR27.avd ]]; then
                             echo "AVD created successfully"
