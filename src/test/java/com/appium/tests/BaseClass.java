@@ -36,7 +36,7 @@ public class BaseClass {
             caps.setCapability(AndroidMobileCapabilityType.ALLOW_TEST_PACKAGES, true);
             caps.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, true);
             caps.setCapability("noReset", "true");
-            caps.setCapability(MobileCapabilityType.BROWSER_NAME, "chrome");
+           // caps.setCapability(MobileCapabilityType.BROWSER_NAME, "chrome");
 
 
             URL url = new URL("http://127.0.0.1:4723/wd/hub");

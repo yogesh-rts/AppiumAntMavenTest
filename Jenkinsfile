@@ -150,15 +150,17 @@ pipeline {
                 ])
             }
         }
-        stage('Archive Junit Results') {
+        /* stage('Archive Junit Results') {
             steps {
-                junit 'target/surefire-reports/**/*.xml'
+                junit 'target/surefire-reports *//** /* *//*.xml'
             }
-        }
+        } */
     }
 
     post {
         always {
+            junit 'target/surefire-reports/**/*.xml'
+
             testNG reportFilenamePattern: '**/target/surefire-reports/testng-results.xml'
 
             echo "Stop running appium server"
