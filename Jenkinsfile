@@ -150,6 +150,11 @@ pipeline {
                 ])
             }
         }
+        stage('Archive Junit Results') {
+            steps {
+                junit 'target/surefire-reports/**/*.xml'
+            }
+        }
     }
 
     post {
