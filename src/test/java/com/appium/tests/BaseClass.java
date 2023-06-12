@@ -31,10 +31,10 @@ public class BaseClass {
             caps.setCapability(MobileCapabilityType.DEVICE_NAME, "EMULATOR32");
             caps.setCapability(MobileCapabilityType.UDID, "emulator-5554");
             caps.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, "60");
-            /*caps.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.example.demoandroidapp");
+            caps.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, "com.example.demoandroidapp");
             caps.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, "MainActivity");
             caps.setCapability(AndroidMobileCapabilityType.ALLOW_TEST_PACKAGES, true);
-            caps.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, true);*/
+            caps.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, true);
             caps.setCapability("noReset", "true");
             caps.setCapability(MobileCapabilityType.BROWSER_NAME, "chrome");
 

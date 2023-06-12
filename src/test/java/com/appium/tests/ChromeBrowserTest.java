@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class ChromeBrowserTest extends BaseClass{
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void testInputNameAsFifa() throws InterruptedException {
         driver.get("https://google.com");
         driver.findElement(By.name("q")).sendKeys("FIFA");
@@ -17,7 +17,7 @@ public class ChromeBrowserTest extends BaseClass{
         System.out.println("Test is completed successfully");
     }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void testInputNameAsMessi() throws InterruptedException {
         driver.get("https://google.com");
         driver.findElement(By.name("q")).sendKeys("Lionel Messi - The GOAT");
@@ -26,7 +26,7 @@ public class ChromeBrowserTest extends BaseClass{
         System.out.println("Test is completed successfully");
     }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void testInputNameAsCR7() throws InterruptedException {
         driver.get("https://google.com");
         driver.findElement(By.name("q")).sendKeys("CR7 - GOAT");
@@ -35,7 +35,7 @@ public class ChromeBrowserTest extends BaseClass{
         System.out.println("Test is completed successfully");
     }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void testInputNameAsQatarFifa() throws InterruptedException {
         driver.get("https://google.com");
         driver.findElement(By.name("q")).sendKeys("FIFA Qatar 2022");
@@ -44,7 +44,7 @@ public class ChromeBrowserTest extends BaseClass{
         System.out.println("Test is completed successfully");
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void testGreetingText() throws InterruptedException {
         driver.findElement(By.xpath("//android.widget.TextView[@text='Hello World!']"));
         Thread.sleep(2000);
