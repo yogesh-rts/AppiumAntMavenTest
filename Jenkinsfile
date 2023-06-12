@@ -163,8 +163,6 @@ pipeline {
 
             echo "Stop running appium server"
             sh "kill \$(lsof -t -i :${APPIUM_PORT})"
-
-         //   cleanWs()
         }
     }
 }
