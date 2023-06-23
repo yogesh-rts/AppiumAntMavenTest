@@ -167,7 +167,7 @@ pipeline {
             sh "kill \$(lsof -t -i :${APPIUM_PORT})"
 
             script {
-            withCredentials([usernamePassword(credentialsId: 'MyGitHub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+            withCredentials([usernamePassword(credentialsId: 'New-GitHub-Access', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                 sh 'echo $USERNAME'
                 sh 'echo $PASSWORD'
             }
