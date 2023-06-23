@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite thread-count="1" verbose="1" name="Chrome Browser Tests" annotations="JDK">
-    <test verbose="2" preserve-order="true" name="ChromeTests">
+    <test verbose="2" preserve-order="true" name="ChromeTests" >
         <classes>
             <class name="com.appium.tests.ChromeBrowserTest">
                 <methods>
                     <include name="testGreetingText" />
-                   <!-- <include name="testInputNameAsFifa" />
-                    <include name="testInputNameAsMessi" />
-                    <include name="testInputNameAsCR7" />
-                    <include name="testInputNameAsQatarFifa" />-->
                 </methods>
             </class>
         </classes>

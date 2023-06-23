@@ -1,6 +1,5 @@
 package com.appium.tests;
 
-import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
@@ -44,11 +43,13 @@ public class ChromeBrowserTest extends BaseClass{
         System.out.println("Test is completed successfully");
     }
 
-    @Test(enabled = true)
+    @Test(description = "[C8]")
     public void testGreetingText() throws InterruptedException {
-        driver.findElement(By.xpath("//android.widget.TextView[@text='Hello World!']"));
+        boolean isTextDisplayed = driver.findElement(By.xpath("//android.widget.TextView[@text='Hello World!']")).isDisplayed();
+        String textShown = driver.findElement(By.xpath("//android.widget.TextView[@text='Hello World!']")).getText();
         Thread.sleep(2000);
-        //Assert.assertEquals();
+        Assert.assertTrue(isTextDisplayed);
+        Assert.assertEquals(textShown, "Hello Word!");
         System.out.println("Test is completed successfully");
     }
 }

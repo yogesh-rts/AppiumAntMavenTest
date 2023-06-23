@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="1" verbose="1" name="Home Page Tests" annotations="JDK">
+    <test verbose="2" preserve-order="true" name="Home Page Tests">
+        <classes>
+            <class name="com.appium.tests.HomePageTest">
+                <methods>
+                    <include name="testHomePageText" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>

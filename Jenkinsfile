@@ -166,6 +166,14 @@ pipeline {
             echo "Stop running appium server"
             sh "kill \$(lsof -t -i :${APPIUM_PORT})"
 
+            script {
+            withCredentials([usernamePassword(credentialsId: 'MyGitHub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                sh 'echo $USERNAME'
+                sh 'echo $PASSWORD'
+            }
+
+            }
+
         }
     }
 }

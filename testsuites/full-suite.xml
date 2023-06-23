@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Full Suites Tests">
+    <suite-files>
+        <suite-file path="chromesuite.xml" />
+        <suite-file path="loginpage.xml" />
+        <suite-file path="homepage.xml"></suite-file>
+    </suite-files>
+</suite>
