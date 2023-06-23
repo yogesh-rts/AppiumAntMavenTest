@@ -159,7 +159,7 @@ pipeline {
 
     post {
         always {
-            junit 'target/surefire-reports/**/*.xml'
+            junit 'target/testng-custom-results.xml'
 
             testNG reportFilenamePattern: '**/target/surefire-reports/testng-results.xml'
 
