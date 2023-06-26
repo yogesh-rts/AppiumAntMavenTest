@@ -10,7 +10,7 @@ pipeline {
         JAVA_HOME="/Users/yogeshkumar/Library/Java/JavaVirtualMachines/temurin-17.0.5/Contents/Home"
         EMULATOR_HOME="${ANDROID_HOME}/emulator"
         MAVEN_HOME="/opt/homebrew/Cellar/maven/3.8.7/libexec/bin"
-     //   MAVEN_PATH="${MAVEN_HOME}/bin:${MAVEN_PATH}"
+        PYTHON_HOME="/opt/homebrew/opt/python@3.11/libexec/bin"
 
         APPIUM_PORT=4723
 
@@ -31,6 +31,7 @@ pipeline {
                 sh 'source ~/.profile'
                 sh 'appium &'
                 sh 'mvn -version'
+                sh 'python3 --version'
                 }
             }
         }
