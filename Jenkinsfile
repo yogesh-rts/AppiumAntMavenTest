@@ -196,7 +196,7 @@ pipeline {
 
                     sh """
                         # Go to test project folder and activate virtual environment
-                        cd samples/python/pytest
+                        cd ${WORKSPACE}
                         . ./venv/bin/activate
 
                         # Install TestRail CLI and upload test results
