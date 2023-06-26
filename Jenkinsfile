@@ -56,7 +56,7 @@ pipeline {
             }
         }
 
-        stage('Setup virtual environment') {
+        stage('Activate virtual env') {
             steps {
                 sh """
                     #Activate the virtual environment
