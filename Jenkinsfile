@@ -52,7 +52,7 @@ pipeline {
                     cd ${WORKSPACE}
 
                      # Setup virtual environment
-                     python3.10 -m venv ./venv
+                     python3.11 -m venv ./venv
                 """
             }
         }
