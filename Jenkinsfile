@@ -44,6 +44,27 @@ pipeline {
                 git branch: 'main', credentialsId: 'MyGitHub', url: 'https://github.com/yogesh-rts/AppiumAntMavenTest'
             }
         } */
+        stage('Setup virtual environment') {
+            steps {
+                sh """
+                    # Go to test project folder
+                    cd ${WORKSPACE}
+
+                     # Setup virtual environment
+                     python3.10 -m venv ./venv
+                """
+            }
+        }
+
+        stage('Setup virtual environment') {
+            steps {
+                sh """
+                    #Activate the virtual environment
+                    cd ${WORKSPACE}
+                    . ./venv/bin/activate
+                """
+            }
+        }
         stage('Android UI tests') {
             steps {
                 script {
@@ -161,18 +182,37 @@ pipeline {
         always {
            // junit 'target/testng-custom-results.xml'
 
+            archiveArtifacts 'target/testng-custom-results.xml'
+
             testNG reportFilenamePattern: '**/target/surefire-reports/testng-results.xml'
 
             echo "Stop running appium server"
             sh "kill \$(lsof -t -i :${APPIUM_PORT})"
 
-           /*  script {
-                withCredentials([usernamePassword(credentialsId: 'creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+            script {
+                withCredentials([usernamePassword(credentialsId: 'TestRailAutomation', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh 'echo $USERNAME'
                     sh 'echo $PASSWORD'
+
+                    sh """
+                        # Go to test project folder and activate virtual environment
+                        cd samples/python/pytest
+                        . ./venv/bin/activate
+
+                        # Install TestRail CLI and upload test results
+                        pip install trcli
+                        trcli -y \
+                            -h "https://jenautomation.testrail.io/" \
+                            -u "USER_EMAIL" \
+                            -p "USER_PASSWORD" \
+                            --project "Android-Automation" \
+                            parse_junit \
+                            --title "Automated Regression Test Run" \
+                            -f "target/testng-custom-results.xml"
+                    """
                 }
 
-            } */
+            }
 
         }
     }
