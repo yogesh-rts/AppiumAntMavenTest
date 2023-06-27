@@ -202,7 +202,7 @@ pipeline {
 
                         # Install TestRail CLI and upload test results
                         pip install trcli
-                        trcli -y \
+                        trcli -n \
                             -h "https://jenauto.testrail.io/" \
                             -u "USERNAME" \
                             -p "PASSWORD" \
