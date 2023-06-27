@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class HomePageTest extends BaseClass {
 
-    @Test(description = "[C10]")
+    @Test(description = "[C3]")
     public void testHomePageText() throws InterruptedException {
         boolean isTextDisplayed = driver.findElement(By.xpath("//android.widget.TextView[@text='Hello World!']")).isDisplayed();
         Thread.sleep(2000);

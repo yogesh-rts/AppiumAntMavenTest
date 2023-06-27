@@ -43,7 +43,7 @@ public class ChromeBrowserTest extends BaseClass{
         System.out.println("Test is completed successfully");
     }
 
-    @Test(description = "[C8]")
+    @Test(description = "[C1]")
     public void testGreetingText() throws InterruptedException {
         boolean isTextDisplayed = driver.findElement(By.xpath("//android.widget.TextView[@text='Hello World!']")).isDisplayed();
         String textShown = driver.findElement(By.xpath("//android.widget.TextView[@text='Hello World!']")).getText();

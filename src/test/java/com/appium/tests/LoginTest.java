@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends BaseClass {
 
-    @Test(description = "[C9]")
+    @Test(description = "[C2]")
     public void testLoginPageText() throws InterruptedException {
         boolean isTextDisplayed = driver.findElement(By.xpath("//android.widget.TextView[@text='Hello World!']")).isDisplayed();
         Thread.sleep(2000);
