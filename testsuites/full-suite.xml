@@ -3,6 +3,6 @@
     <suite-files>
         <suite-file path="chromesuite.xml" />
         <suite-file path="loginpage.xml" />
-        <suite-file path="homepage.xml"></suite-file>
+        <suite-file path="homepage.xml"/>
     </suite-files>
 </suite>

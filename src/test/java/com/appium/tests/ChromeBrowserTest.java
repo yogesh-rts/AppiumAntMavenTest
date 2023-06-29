@@ -52,4 +52,14 @@ public class ChromeBrowserTest extends BaseClass{
         Assert.assertEquals(textShown, "Hello Word!");
         System.out.println("Test is completed successfully");
     }
+
+    @Test(description = "[C13]")
+    public void testPageText() throws InterruptedException {
+        boolean isTextDisplayed = driver.findElement(By.xpath("//android.widget.TextView[@text='Hello World!']")).isDisplayed();
+        String textShown = driver.findElement(By.xpath("//android.widget.TextView[@text='Hello World!']")).getText();
+        Thread.sleep(2000);
+        Assert.assertTrue(isTextDisplayed);
+        Assert.assertEquals(textShown, "Hello World!");
+        System.out.println("Test is completed successfully");
+    }
 }

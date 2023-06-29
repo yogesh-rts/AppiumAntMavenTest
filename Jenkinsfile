@@ -204,8 +204,8 @@ pipeline {
                         pip install trcli
                         trcli -n \
                             -h "https://jenauto.testrail.io/" \
-                            -u "USERNAME" \
-                            -p "PASSWORD" \
+                            -u "yogeshravi.careers@gmail.com" \
+                            -p "Mazda@992" \
                             --project "Android-Automation" \
                             parse_junit \
                             --title "Automated Regression Test Run" \

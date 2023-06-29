@@ -6,6 +6,7 @@
             <class name="com.appium.tests.ChromeBrowserTest">
                 <methods>
                     <include name="testGreetingText" />
+                    <include name="testPageText" />
                 </methods>
             </class>
         </classes>

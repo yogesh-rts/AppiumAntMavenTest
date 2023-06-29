@@ -2,8 +2,6 @@ package com.appium.tests;
 
 import org.testng.*;
 import org.testng.annotations.Test;
-import org.testng.xml.XmlClass;
-import org.testng.xml.XmlInclude;
 import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 
@@ -80,17 +78,26 @@ public class CustomTestListener implements ITestListener {
         }*/
     }
 
-    @Override
     public void onFinish(ITestContext context) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilePath))) {
-            writer.write("<testsuites>\n");
+            writer.write("<testsuites name=\"Custom Results\">\n");
 
             List<XmlSuite> xmlSuites = context.getSuite().getXmlSuite().getParentSuite().getChildSuites();
             System.out.println("Number of suites: " + xmlSuites.size());
 
-            xmlSuites.stream()
-                    .flatMap(xmlSuite -> xmlSuite.getTests().stream())
-                    .forEach(xmlTest -> processXmlTest(xmlTest, writer));
+            xmlSuites.forEach(xmlSuite -> {
+                try {
+                    writer.write("  <testsuite name=\"" + xmlSuite.getName() + "\">\n");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                xmlSuite.getTests().forEach(xmlTest -> processXmlTest(xmlTest, writer));
+                try {
+                    writer.write("  </testsuite>\n");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
 
             writer.write("</testsuites>\n");
 
@@ -101,34 +108,35 @@ public class CustomTestListener implements ITestListener {
     }
 
     private void processXmlTest(XmlTest xmlTest, BufferedWriter writer) {
-        xmlTest.getXmlClasses().stream()
-                .flatMap(xmlClass -> xmlClass.getIncludedMethods().stream())
-                .forEach(include -> {
-                    String methodName = include.getName();
-                    String caseId = caseIdMap.getOrDefault(methodName, "");
-                    String status = testcaseStatusMap.getOrDefault(methodName, "");
+        xmlTest.getXmlClasses().forEach(xmlClass -> {
+            String className = xmlClass.getName();
+            xmlClass.getIncludedMethods().forEach(include -> {
+                String methodName = include.getName();
+                String caseId = caseIdMap.getOrDefault(methodName, "");
+                String status = testcaseStatusMap.getOrDefault(methodName, "");
 
-                    try {
-                        writer.write(" <testcase classname=\"" + xmlTest.getName() + "\" name=\"" + methodName + "\" time=\"0\">\n");
-                        writer.write("   <properties>\n");
-                        writer.write("     <property name=\"test_id\" value=\"" + caseId + "\"/>\n");
-                        writer.write("   </properties>\n");
+                try {
+                    writer.write("    <testcase classname=\"" + className + "\" name=\"" + methodName + "\" time=\"0\">\n");
+                    writer.write("      <properties>\n");
+                    writer.write("        <property name=\"test_id\" value=\"" + caseId + "\"/>\n");
+                    writer.write("      </properties>\n");
 
-                        System.out.println("Status - " + status + " " + methodName);
+                    System.out.println("Status - " + status + " " + methodName);
 
-                        if (status.equals("failed")) {
-                            writer.write("  <failure message=\"" + iResult.getThrowable().getMessage() + "\">\n");
-                            writer.write("    <![CDATA[" + getStackTrace(iResult.getThrowable()) + "]]>\n");
-                            writer.write("  </failure>\n");
-                        } else if (status.equals("skipped")) {
-                            writer.write("  <skipped />\n");
-                        }
-
-                        writer.write(" </testcase>\n");
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    if (status.equals("failed")) {
+                        writer.write("      <failure message=\"" + iResult.getThrowable().getMessage() + "\">\n");
+                        writer.write("        <![CDATA[" + getStackTrace(iResult.getThrowable()) + "]]>\n");
+                        writer.write("      </failure>\n");
+                    } else if (status.equals("skipped")) {
+                        writer.write("      <skipped />\n");
                     }
-                });
+
+                    writer.write("    </testcase>\n");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        });
     }
 
 
