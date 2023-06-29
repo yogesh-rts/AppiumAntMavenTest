@@ -204,8 +204,8 @@ pipeline {
                         pip install trcli
                         trcli -n \
                             -h "https://jenauto.testrail.io/" \
-                            -u "yogeshravi.careers@gmail.com" \
-                            -p "Mazda@992" \
+                            -u $USERNAME \
+                            -p $PASSWORD \
                             --project "Android-Automation" \
                             parse_junit \
                             --case-matcher "property" \
