@@ -212,6 +212,7 @@ pipeline {
                             --title "Automated Regression Test Run" \
                             -f "target/testng-custom-results.xml"
                     """
+
                 }
 
             }
