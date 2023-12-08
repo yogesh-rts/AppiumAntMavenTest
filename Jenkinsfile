@@ -159,6 +159,37 @@ pipeline {
                     sh 'mvn surefire-report:report-only'
                 }
             }
+
+            post {
+                always {
+                    archiveArtifacts 'target/testng-custom-results.xml'
+
+                    script {
+                        withCredentials([usernamePassword(credentialsId: 'TestRailDemo', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                            sh 'echo $USERNAME'
+                            sh 'echo $PASSWORD'
+
+                            sh """
+                                # Go to test project folder and activate virtual environment
+                                cd ${WORKSPACE}
+                                . ./venv/bin/activate
+
+                                # Install TestRail CLI and upload test results
+                                pip install trcli
+                                trcli -n \
+                                -h "https://jenauto.testrail.io/" \
+                                -u $USERNAME \
+                                -p $PASSWORD \
+                                --project "Android-Automation" \
+                                parse_junit \
+                                --case-matcher "property" \
+                                --title "Automated Regression Test Run" \
+                                -f "target/testng-custom-results.xml"
+                            """
+                        }
+                    }
+                }
+            }
         }
         stage('Publish Test Results') {
             steps {
@@ -183,14 +214,14 @@ pipeline {
         always {
            // junit 'target/testng-custom-results.xml'
 
-            archiveArtifacts 'target/testng-custom-results.xml'
+            /* archiveArtifacts 'target/testng-custom-results.xml' */
 
             testNG reportFilenamePattern: '**/target/surefire-reports/testng-results.xml'
 
             echo "Stop running appium server"
             sh "kill \$(lsof -t -i :${APPIUM_PORT})"
 
-            script {
+           /*  script {
                 withCredentials([usernamePassword(credentialsId: 'TestRailDemo', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh 'echo $USERNAME'
                     sh 'echo $PASSWORD'
@@ -215,7 +246,7 @@ pipeline {
 
                 }
 
-            }
+            } */
 
         }
     }

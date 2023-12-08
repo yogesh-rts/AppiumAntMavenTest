@@ -5,7 +5,7 @@ import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ChromeBrowserTest extends BaseClass{
+public class ChromeBrowserTest extends BaseClass {
 
     @Test(enabled = false)
     public void testInputNameAsFifa() throws InterruptedException {
