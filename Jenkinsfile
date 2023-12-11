@@ -218,7 +218,7 @@ pipeline {
 
             /* archiveArtifacts 'target/testng-custom-results.xml' */
 
-            //testNG reportFilenamePattern: '**/target/surefire-reports/testng-results.xml'
+            testNG reportFilenamePattern: '**/target/surefire-reports/testng-results.xml'
 
             echo "Stop running appium server"
             sh "kill \$(lsof -t -i :${APPIUM_PORT})"
