@@ -162,9 +162,11 @@ pipeline {
 
             post {
                 always {
-                    archiveArtifacts 'target/testng-custom-results.xml'
 
                     script {
+                        sh 'mv target/testng-custom-results.xml target/android-test-results.xml'
+                        archiveArtifacts 'target/android-test-results.xml'
+
                         withCredentials([usernamePassword(credentialsId: 'TestRailDemo', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                             sh 'echo $USERNAME'
                             sh 'echo $PASSWORD'
