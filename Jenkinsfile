@@ -117,13 +117,13 @@ pipeline {
                     def deviceId = adbOutput.split('\n')[1].split('\t')[0]
 
                     // Find the file that matches the wildcard
-                    def filePathName= sh(returnStdout: true, script:'ls /Users/yogeshkumar/.jenkins/workspace/Android-QA/Android-UI-Project/Android-UI-*-debug.apk').trim()
+                    /* def filePathName= sh(returnStdout: true, script:'ls /Users/yogeshkumar/.jenkins/workspace/Android-QA/Android-UI-Project/Android-UI-*-debug.apk').trim()
                     def fileName = sh(returnStdout: true, script: "basename ${filePathName}").trim()
                     echo "${fileName}"
                     // Copy APK artifact from another job 'HALO-ANDROID'
                     apkPath= "/Users/yogeshkumar/.jenkins/workspace/Android-QA/Android-UI-Project/${fileName}"
-                    targetDir = "${WORKSPACE}/Android-UI-2-debug.apk"
-                    sh "cp ${apkPath} ${targetDir}"
+                    targetDir = "${WORKSPACE}/Android-UI-3-debug.apk"
+                    sh "cp ${apkPath} ${targetDir}" */
 
 
                    //Check if the file was copied successfully
@@ -134,12 +134,12 @@ pipeline {
                         exit 1
                     fi""" */
 
-                    /* copyArtifacts(
+                    copyArtifacts(
                     projectName: 'Android-QA/Android-UI-Project',
                     flatten: true,
                     fingerprintArtifacts: true,
                     selector: lastWithArtifacts()
-                    ); */
+                    );
 
                     def isInstalled = sh(script: "${ANDROID_PLATFORM_TOOLS}/adb shell pm list packages", returnStdout: true).trim()
                     echo "${isInstalled}"
