@@ -186,7 +186,7 @@ pipeline {
                                 parse_junit \
                                 --case-matcher "property" \
                                 --title "Automated Regression Test Run" \
-                                -f "target/testng-custom-results.xml"
+                                -f "target/android-test-results.xml"
                             """
                         }
                     }
