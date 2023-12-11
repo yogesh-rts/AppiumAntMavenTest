@@ -177,7 +177,7 @@ pipeline {
                                 # Install TestRail CLI and upload test results
                                 pip install trcli
                                 trcli -n \
-                                -h "https://jenauto.testrail.io/" \
+                                -h "https://jenkinsautotest.testrail.io/" \
                                 -u $USERNAME \
                                 -p $PASSWORD \
                                 --project "Android-Automation" \
